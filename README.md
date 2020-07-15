@@ -3,7 +3,7 @@ Debian-based Docker image with cargo [fmt](https://github.com/rust-lang/rustfmt)
 
 Useful to run cargo tools in your private CI without having to install cargo components manually.
 
-Based on the latest official [Rust docker image](https://github.com/rust-lang/docker-rust) with `nightly` toolchain and tools enabled.
+Based on the latest official [Rust docker image](https://github.com/rust-lang/docker-rust) with both `stable` and `nightly` toolchains and tools enabled.
 
 ### Included `cargo` commands:
 - `check`, `test`, `build`, `tree`, `doc`: included in [base Rust image](https://github.com/rust-lang/docker-rust)
