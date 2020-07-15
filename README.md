@@ -1,4 +1,4 @@
-# rust-aio
+# docker-rust-aio
 Debian-based Docker image with cargo [fmt](https://github.com/rust-lang/rustfmt), [clippy](https://github.com/rust-lang/rust-clippy) and [deny](https://github.com/EmbarkStudios/cargo-deny) enabled.
 
 Useful to run cargo tools in your private CI without having to install cargo components manually.
