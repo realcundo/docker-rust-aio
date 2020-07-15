@@ -12,3 +12,12 @@ RUN rustup component add clippy && \
     cargo fmt --version && \
     cargo clippy --version && \
     cargo deny --version
+
+# self-test
+RUN mkdir /tmp/self-test && \
+    cd /tmp/self-test && \
+    USER=test cargo init . && \
+    cargo fmt && \
+    cargo clippy && \
+    cargo deny list && \
+    rm -rf /tmp/self-test
