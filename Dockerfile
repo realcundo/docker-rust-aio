@@ -10,7 +10,7 @@ RUN rustup toolchain install nightly && \
     rustup component add clippy && \
     rustup component add rustfmt && \
     rustup component add clippy --toolchain nightly && \
-#rustup component add rustfmt --toolchain nightly && \
+    rustup component add rustfmt --toolchain nightly && \
     cargo install cargo-deny && \
     rm -rf /usr/local/cargo/registry && \
     rustc --version && \
@@ -24,7 +24,7 @@ RUN mkdir /tmp/self-test && \
     cd /tmp/self-test && \
     USER=test cargo init . && \
     cargo fmt && \
-#cargo +nightly fmt && \
+    cargo +nightly fmt && \
     cargo clippy && \
     cargo +nightly clippy && \
     cargo deny list && \
