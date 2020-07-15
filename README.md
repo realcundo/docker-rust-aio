@@ -14,12 +14,12 @@ Based on the latest official [Rust docker image](https://github.com/rust-lang/do
 ## Running
 Run as a local user building using Rust project in `$PWD`:
 ```bash
-docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$PWD:/usr/src/myapp" realcundo/rust-aio cargo clippy
+docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$PWD:/usr/src/myapp" realcundo/docker-rust-aio cargo clippy
 ```
 To preserve cargo build files between runs (e.g. for incremental builds), use
 ```bash
 mkdir "$LOCAL_RUST_CARGO_CACHE"
-docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$PWD:/usr/src/myapp" -v "$LOCAL_RUST_CARGO_CACHE:/usr/local/cargo/registry" realcundo/rust-aio cargo clippy
+docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$PWD:/usr/src/myapp" -v "$LOCAL_RUST_CARGO_CACHE:/usr/local/cargo/registry" realcundo/docker-rust-aio cargo clippy
 ```
 Make sure that `$LOCAL_RUST_CARGO_CACHE` exists before running the docker container. Otherwise it'll be created by docker as a root and your user won't be able to access it.
 
@@ -27,5 +27,5 @@ Make sure that `$LOCAL_RUST_CARGO_CACHE` exists before running the docker contai
 Feel free to open PRs to include your favourite cargo component.
 
 ## Links
-- Github: https://github.com/realcundo/rust-aio
-- Dockerhub: https://hub.docker.com/r/realcundo/rust-aio
+- Github: https://github.com/realcundo/docker-rust-aio
+- Dockerhub: https://hub.docker.com/r/realcundo/docker-rust-aio
