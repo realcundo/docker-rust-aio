@@ -1,14 +1,16 @@
 # rust-aio
-Debian-based Docker image with cargo fmt, clippy and deny enabled.
+Debian-based Docker image with cargo [fmt](https://github.com/rust-lang/rustfmt), [clippy](https://github.com/rust-lang/rust-clippy) and [deny](https://github.com/EmbarkStudios/cargo-deny) enabled.
+
+Based on the latest official [Rust docker image](https://github.com/rust-lang/docker-rust) with `nightly` toolchain and tools enabled.
 
 ## Running
 Run as a local user building using Rust project in `$LOCAL_RUST_PROJECT_DIR`:
 ```bash
-docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$LOCAL_RUST_PROJECT_DIR:/usr/src/myapp" XXX cargo clippy
+docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$LOCAL_RUST_PROJECT_DIR:/usr/src/myapp" realcundo/rust-aio cargo clippy
 ```
 To preserve cargo build files between runs (e.g. for incremental builds), use
 ```bash
 mkdir "$LOCAL_RUST_CARGO_CACHE"
-docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$LOCAL_RUST_PROJECT_DIR:/usr/src/myapp" -v "$LOCAL_RUST_CARGO_CACHE:/usr/local/cargo/registry" XXX cargo clippy
+docker run --rm -t --user "$(id -u)":"$(id -g)" -v "$LOCAL_RUST_PROJECT_DIR:/usr/src/myapp" -v "$LOCAL_RUST_CARGO_CACHE:/usr/local/cargo/registry" realcundo/rust-aio cargo clippy
 ```
 Make sure that `$LOCAL_RUST_CARGO_CACHE` exists before running the docker container. Otherwise it'll be created by docker as a root and your user won't be able to access it.
