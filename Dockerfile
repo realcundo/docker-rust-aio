@@ -3,6 +3,16 @@ FROM rust:latest
 # default location of Rust app
 WORKDIR /usr/src/myapp
 
+# install lld
+RUN echo 'deb http://apt.llvm.org/buster/ llvm-toolchain-buster main' > /etc/apt/sources.list.d/llvm.list && \
+    (wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -) && \
+    apt-get update && apt-get install -y lld-12 && \
+    rm -rf /var/lib/apt/lists/* && \
+    ln -s /usr/bin/ld.lld-* /usr/bin/ld.lld && \
+    ld.bfd --version && \
+    ld.gold --version && \
+    ld.lld --version
+
 # install nightly and all the components in stable+nightly
 # some components are not always available in nightly, fail
 # the build in that case. Users can use previous docker image.

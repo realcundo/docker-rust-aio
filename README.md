@@ -11,6 +11,11 @@ Based on the latest official [Rust docker image](https://github.com/rust-lang/do
 - `deny`: https://github.com/EmbarkStudios/cargo-deny
 - `fmt`: https://github.com/rust-lang/rustfmt
 
+### Available linkers
+- `ld.bfd`: https://sourceware.org/binutils
+- `ld.gold`: https://sourceware.org/binutils
+- `ld.lld` (v12) https://lld.llvm.org
+
 ## Running
 Run as a local user building using Rust project in `$PWD`:
 ```bash
