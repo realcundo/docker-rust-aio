@@ -30,7 +30,7 @@ docker run
   -t \
   --user "$(id -u)":"$(id -g)" \
   -v "$PWD:/usr/src/myapp" \
-  realcundo/docker-rust-aio z
+  realcundo/docker-rust-aio \
   cargo clippy
 ```
 To preserve cargo build files between runs (e.g. for incremental builds), use
