@@ -1,5 +1,5 @@
 # docker-rust-aio
-Debian Buster based Docker image with cargo [fmt](https://github.com/rust-lang/rustfmt), [clippy](https://github.com/rust-lang/rust-clippy) and [deny](https://github.com/EmbarkStudios/cargo-deny) enabled.
+Debian Buster based Docker image with cargo [fmt](https://github.com/rust-lang/rustfmt), [clippy](https://github.com/rust-lang/rust-clippy), [release](https://github.com/sunng87/cargo-release) and [deny](https://github.com/EmbarkStudios/cargo-deny) enabled.
 
 Useful to run cargo tools in your local CI without having to install cargo components manually.
 
@@ -10,6 +10,7 @@ Target triple: `*-x86_64-unknown-linux-gnu`.
 - `check`, `test`, `build`, `tree`, `doc`: included in [base Rust image](https://github.com/rust-lang/docker-rust)
 - `clippy`: https://github.com/rust-lang/rust-clippy
 - `deny`: https://github.com/EmbarkStudios/cargo-deny
+- `release`: https://github.com/sunng87/cargo-release
 - `fmt`: https://github.com/rust-lang/rustfmt
 
 ### Available linkers:

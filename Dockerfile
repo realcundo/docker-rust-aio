@@ -22,12 +22,14 @@ RUN rustup toolchain install nightly && \
     rustup component add clippy --toolchain nightly && \
     rustup component add rustfmt --toolchain nightly && \
     cargo install cargo-deny && \
+    cargo install cargo-release && \
     rm -rf /usr/local/cargo/registry && \
     rustc --version && \
     cargo --version && \
     cargo fmt --version && \
     cargo clippy --version && \
-    cargo deny --version
+    cargo deny --version && \
+    cargo release --version
 
 # self-test
 RUN mkdir /tmp/self-test && \
@@ -38,4 +40,5 @@ RUN mkdir /tmp/self-test && \
     cargo clippy && \
     cargo +nightly clippy && \
     cargo deny list && \
+    cargo release --dry-run && \
     rm -rf /tmp/self-test
