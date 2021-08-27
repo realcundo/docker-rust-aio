@@ -40,5 +40,5 @@ RUN mkdir /tmp/self-test && \
     cargo clippy && \
     cargo +nightly clippy && \
     cargo deny list && \
-    cargo release --dry-run && \
+    cargo release && \
     rm -rf /tmp/self-test
