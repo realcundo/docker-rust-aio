@@ -4,7 +4,7 @@ FROM rust:latest
 WORKDIR /usr/src/myapp
 
 # install lld
-RUN echo 'deb http://apt.llvm.org/buster/ llvm-toolchain-buster main' > /etc/apt/sources.list.d/llvm.list && \
+RUN bash -c 'source /etc/os-release && echo "deb http://apt.llvm.org/${VERSION_CODENAME}/ llvm-toolchain-${VERSION_CODENAME} main"' > /etc/apt/sources.list.d/llvm.list && \
     (wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -) && \
     apt-get update && apt-get install -y lld-14 && \
     rm -rf /var/lib/apt/lists/* && \
