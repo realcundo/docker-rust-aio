@@ -1,4 +1,4 @@
-FROM rust:latest
+FROM rust:1.57.0 as base
 
 # default location of Rust app
 WORKDIR /usr/src/myapp
@@ -21,17 +21,14 @@ RUN rustup toolchain install nightly && \
     rustup component add rustfmt && \
     rustup component add clippy --toolchain nightly && \
     rustup component add rustfmt --toolchain nightly && \
-    cargo install cargo-deny && \
+    cargo install --locked cargo-deny && \
     cargo install cargo-release && \
-    rm -rf /usr/local/cargo/registry && \
-    rustc --version && \
-    cargo --version && \
-    cargo fmt --version && \
-    cargo clippy --version && \
-    cargo deny --version && \
-    cargo release --version
+    rm -rf /usr/local/cargo/registry
 
 # self-test
+FROM base as self-test
+RUN git config --global user.email "you@example.com" && \
+    git config --global user.name "Your Name"
 RUN mkdir /tmp/self-test && \
     cd /tmp/self-test && \
     USER=test cargo init . && \
@@ -40,5 +37,16 @@ RUN mkdir /tmp/self-test && \
     cargo clippy && \
     cargo +nightly clippy && \
     cargo deny list && \
-    cargo release && \
+    ls -lah && \
+    git add .gitignore Cargo* src && git commit -m 'init' && \
+    cargo release --no-push --no-publish && \
     rm -rf /tmp/self-test
+
+# final
+FROM base
+RUN rustc --version && \
+    cargo --version && \
+    cargo fmt --version && \
+    cargo clippy --version && \
+    cargo deny --version && \
+    cargo release --version
