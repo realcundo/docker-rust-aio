@@ -16,7 +16,7 @@ Target triple: `*-x86_64-unknown-linux-gnu`.
 ### Available linkers:
 - `ld.bfd`: https://sourceware.org/binutils
 - `ld.gold`: https://sourceware.org/binutils
-- `ld.lld` (v14) https://lld.llvm.org
+- `ld.lld` (v15) https://lld.llvm.org
 
 The docker image is built daily and if all tools are available, the image is pushed to [Docker Hub](https://hub.docker.com/r/realcundo/docker-rust-aio).
 The image is guaranteed to have all listed tools available both in `stable` and `nightly`.
