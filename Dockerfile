@@ -6,7 +6,7 @@ WORKDIR /usr/src/myapp
 # install lld
 RUN bash -c 'source /etc/os-release && echo "deb http://apt.llvm.org/${VERSION_CODENAME}/ llvm-toolchain-${VERSION_CODENAME} main"' > /etc/apt/sources.list.d/llvm.list && \
     (wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -) && \
-    apt-get update && apt-get install -y lld-16 && \
+    apt-get update && apt-get install -y lld-17 && \
     rm -rf /var/lib/apt/lists/* && \
     ln -s /usr/bin/ld.lld-* /usr/bin/ld.lld && \
     ld.bfd --version && \
